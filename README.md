@@ -1,9 +1,8 @@
 
-stl_tools
+csdt_stl_tools
 =======================
-<!--[![Build Status](https://travis-ci.org/thearn/stl_tools.png?branch=master)](https://travis-ci.org/thearn/stl_tools)-->
 
-Python code to generate STL geometry files from plain text, LaTeX code, and 2D numpy arrays (matrices).
+Python code to generate STL geometry files from plain text, LaTeX code, and 2D numpy arrays (matrices). (Based on thearn/stl_tools)
 
 This allows for rapid 3D printing of text, rendered equations, or simple digital images.
 Use them for product prototyping, art, cookie cutters, ice cube trays, chocolate molds, (see [this](http://www.makerbot.com/tutorials/making-chocolate-molds/)
@@ -29,14 +28,14 @@ want to write Python code directly.
 - [Matplotlib](http://matplotlib.org/) 1.2.1 or higher (for rendering text and LaTeX to image data)
 
 ## Installation:
-There are two ways to install `stl_tools`.
+There are two ways to install `csdt_stl_tools`.
 
 It's recommended that you install Numpy, Scipy, and Matplotlib first, either
 using binary installers (windows) or using a package manager (`apt-get`,
 `homebrew`), etc.
 
 ### Installing straight from `PyPI`:
-Run `pip install stl_tools`.
+Run `pip install csdt_stl_tools`.
 
 ### Installing from Source:
 Run `python setup.py build install` to install.
@@ -44,7 +43,7 @@ Run `python setup.py build install` to install.
 Either method will also install the
 command line script `image2stl` into the `Python/Scripts` directory.
 
-Automatic tests can be performed by running `stl_tools/test/test_stl.py`.
+Automatic tests can be performed by running `csdt_stl_tools/test/test_stl.py`.
 
 If a path to a C compiler is found by setuptools, a C-extension will be built to handle most of the computational heavy
 lifting needed by the library at runtime. The library can default to using plain python code as well, though this is
@@ -59,7 +58,7 @@ The "solid" keyword argument sets whether to create a solid geometry (with sides
 The algorithm used to generate the sides and bottom have not yet been optimized, so may double the file size
 at the moment. We'll generate this example without a bottom.
 ```python
-from stl_tools import numpy2stl
+from csdt_stl_tools import numpy2stl
 
 from scipy.misc import lena, imresize
 from scipy.ndimage import gaussian_filter
@@ -131,7 +130,7 @@ markers are intended.
 Python code:
 
 ```python
-from stl_tools import numpy2stl, text2png, text2array
+from csdt_stl_tools import numpy2stl, text2png, text2array
 
 text = ("$\oint_{\Gamma} (A\, dx + B\, dy) = \iint_{U} \left(\\frac{\partial "
         "B}{\partial x} - \\frac{\partial A}{\partial y}\\right)\ dxdy$ \n\n "
@@ -154,9 +153,9 @@ Source image vs. output geometry:
 
 
 ## Library usage:
-There are 3 principal functions (no classes) to import and use from stl_tools:
+There are 3 principal functions (no classes) to import and use from csdt_stl_tools:
 
-### `stl_tools.numpy2stl`
+### `csdt_stl_tools.numpy2stl`
     numpy2stl(A, fn, scale=0.1, mask_val = -np.inf, ascii=False, calc_normals=False)
     Reads a numpy array, and outputs an STL file
 
@@ -201,7 +200,7 @@ The `max_width`, `max_height`, and `max_depth` values are measurements (in mm) u
 the largest size that can fit onto your 3D printer platform. Default values are for the MakerBot Replicator.
 
 
-### `stl_tools.text2png`
+### `csdt_stl_tools.text2png`
     text2png(text, fn = None)
     Renders inputted text to a png image using matplotlib.
 
@@ -217,7 +216,7 @@ the largest size that can fit onto your 3D printer platform. Default values are 
 `text2png()` was written as an intermediate helper function to render text to pngs, to then be imported, filtered, and meshed.
 However, it may be useful in it's own right. For example, it can be used alone to render LaTeX expressions into images, to be imported into WYSIWYG document editors like MS Word or LibreOffice Writer.
 
-### `stl_tools.text2array`
+### `csdt_stl_tools.text2array`
     text2array(text)
     Renders inputted text, and returns array representation.
 
